@@ -1,12 +1,14 @@
 <?php
 
+use App\Settings\GeneralSettings;
+
 return [
 
     /*
      * You can register all the settings classes here.
      */
     'settings' => [
-
+        GeneralSettings::class
     ],
 
     /*
