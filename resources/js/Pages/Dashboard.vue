@@ -96,11 +96,20 @@ export default {
     methods: {
         refreshProps() {
             Inertia.reload({
-                only: ['CurrentTemp']
+                only: [
+                    'CurrentTemp',
+                    'topLimit',
+                    'bottomLimit'
+                ]
             })
         },
         submit() {
-            this.$inertia.post(route('api_set_limits'), this.form)
+            this.$inertia.post(route('api_set_limits'), this.form, {
+                onFinish: () => {
+                    this.refreshProps();
+                }
+            })
+
         }
     }
 }
