@@ -21,6 +21,9 @@ Route::get('/', [WelcomeController::class, 'index'])->name('index');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
 
-    Route::post('/limits', [TemperatureController::class, 'setLimits'])->name('api_set_limits');
-    Route::post('/temperature', [TemperatureController::class, 'create'])->name('api_create_temp');
+    Route::post('/limits', [TemperatureController::class, 'setLimits'])->name('set_limits');
+
+    Route::prefix('/api')->group(function () {
+        Route::post('/temperature', [TemperatureController::class, 'create'])->name('api_create_temp');
+    });
 });
