@@ -12,6 +12,8 @@ class DashboardController extends Controller
     {
         return Inertia::render('Dashboard', [
             'CurrentTemp' => null,
+            'topLimit' => null,
+            'bottomLimit' => null,
         ]);
     }
 }
