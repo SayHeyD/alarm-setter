@@ -19,4 +19,6 @@ Route::get('/', [WelcomeController::class, 'index'])->name('index');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
+
+    Route::post('/setTemperatureLimits')->name('api_set_limits');
 });
