@@ -23,7 +23,7 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->uuid,
+            'device_id' => $this->faker->uuid,
             'last_update' => Carbon::now()->toDateTimeString(),
         ];
     }

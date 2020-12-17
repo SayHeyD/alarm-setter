@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Temperature;
+use App\Models\Device;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -49,6 +50,7 @@ class TemperatureFactory extends Factory
             'recorded_at' => Carbon::now()->toDateTimeLocalString(),
             'topLimit' => $topLimit,
             'bottomLimit' => $bottomLimit,
+            'device_id' => 1,
         ];
     }
 }
