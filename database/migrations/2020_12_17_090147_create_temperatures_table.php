@@ -19,6 +19,7 @@ class CreateTemperaturesTable extends Migration
             $table->timestamp('recorded_at');
             $table->float('topLimit', 8, 1);
             $table->float('bottomLimit', 8, 1);
+            $table->foreignId('device_id')->constrained();
             $table->timestamps();
         });
     }
