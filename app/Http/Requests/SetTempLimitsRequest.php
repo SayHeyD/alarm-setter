@@ -25,7 +25,7 @@ class SetTempLimitsRequest extends FormRequest
     public function rules()
     {
         return [
-            'topLimit' => ['required', 'numeric', 'between:-5,60', 'gt:bottomLimit'],
+            'topLimit' => ['required', 'numeric', 'between:-40,105', 'gt:bottomLimit'],
             'bottomLimit' => ['required', 'numeric', 'between:-5,60'],
         ];
     }
