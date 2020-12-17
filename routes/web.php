@@ -22,4 +22,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard');
 
     Route::post('/setTemperatureLimits', [TemperatureController::class, 'setLimits'])->name('api_set_limits');
+    Route::post('/tempEntry', [TemperatureController::class, 'create'])->name('api_create_temp');
 });

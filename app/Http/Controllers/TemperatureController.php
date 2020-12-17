@@ -10,4 +10,9 @@ class TemperatureController extends Controller
     {
 
     }
+
+    public function create()
+    {
+
+    }
 }
