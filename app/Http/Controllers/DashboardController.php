@@ -15,12 +15,12 @@ class DashboardController extends Controller
         $lastEntries = Temperature::latest('created_at')->limit(10)->with('device')->get();
 
         return Inertia::render('Dashboard', [
-            'CurrentTemp' => $temp->recorded,
-            'topLimit' => $temp->topLimit,
-            'bottomLimit' => $temp->bottomLimit,
-            'settingsTopLimit' => $settings->topLimit,
-            'settingsBottomLimit' => $settings->bottomLimit,
-            'lastEntries' => $lastEntries,
+            'CurrentTemp' => $temp->recorded ?? null,
+            'topLimit' => $temp->topLimit ?? null,
+            'bottomLimit' => $temp->bottomLimit ?? null,
+            'settingsTopLimit' => $settings->topLimit ?? null,
+            'settingsBottomLimit' => $settings->bottomLimit ?? null,
+            'lastEntries' => $lastEntries ?? null,
         ]);
     }
 }
