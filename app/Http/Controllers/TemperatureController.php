@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SetTempLimitsRequest;
 use App\Settings\GeneralSettings;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class TemperatureController extends Controller
 {
