@@ -10,4 +10,9 @@ class Temperature extends Model
     use HasFactory;
 
     protected $fillable = ['recorded', 'recorded_at', 'topLimit', 'bottomLimit'];
+
+    public function device()
+    {
+        return $this->belongsTo(Device::class);
+    }
 }

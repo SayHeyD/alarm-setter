@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     use HasFactory;
+
+    public function temperatures()
+    {
+        return $this->hasMany(Temperature::class);
+    }
 }
