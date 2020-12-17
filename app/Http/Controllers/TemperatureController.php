@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateTempEntryRequest;
 use App\Http\Requests\SetTempLimitsRequest;
 use App\Settings\GeneralSettings;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Temperature;
 use App\Models\Device;
@@ -22,9 +23,11 @@ class TemperatureController extends Controller
 
     public function create(CreateTempEntryRequest $request, GeneralSettings $settings)
     {
-        $device = Device::where('device_id', $request->device);
-
+        // Initializing return Code for response
         $returnCode = 0;
+
+        // DEVICE SECTION
+        $device = Device::where('device_id', $request->device)->first();
 
         if ($device == null)
         {
@@ -32,20 +35,30 @@ class TemperatureController extends Controller
             $device->device_id = $request->device;
         }
 
-        $device->recorded = $request->recorded;
-        $device->recorded_at = $request->recorded_at;
-
+        $device->last_update = Carbon::now()->toDateTimeString();
         $device->save();
 
-        if ($device->recorded >= $settings->topLimit)
+        if ($request->recorded >= $settings->topLimit)
         {
             $returnCode = 1;
         }
-        elseif ($device->recorded <= $settings->bottomLimit)
+        elseif ($request->recorded <= $settings->bottomLimit)
         {
             $returnCode = 2;
         }
 
+        // TEMPERATURE SAVE
+        $temp = new Temperature();
+
+        $temp->recorded = $request->recorded;
+        $temp->recorded_at = $request->recorded_at;
+        $temp->topLimit = $settings->topLimit;
+        $temp->bottomLimit = $settings->bottomLimit;
+        $temp->device_id = $device->id;
+
+        $temp->save();
+
+        // Return response code to the board
         return response()->json([
             'code' => $returnCode,
         ]);
