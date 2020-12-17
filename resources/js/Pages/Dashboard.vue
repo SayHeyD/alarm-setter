@@ -83,7 +83,7 @@
                 <td class="text-center py-2" v-text="entry.topLimit"></td>
                 <td class="text-center py-2" v-text="entry.bottomLimit"></td>
                 <td class="text-center py-2" v-text="entry.recorded_at"></td>
-                <td class="text-center py-2">Der Gerät</td>
+                <td class="text-center py-2" v-text="entry.device.device_id"></td>
               </tr>
             </tbody>
           </table>
@@ -111,6 +111,14 @@ export default {
             Type: Number,
             Default: null,
         },
+        settingsTopLimit: {
+            Type: Number,
+            Default: 0.0,
+        },
+        settingsBottomLimit: {
+            Type: Number,
+            Default: 0.0,
+        },
         lastEntries: {
             Type: Array,
             Default: null,
@@ -131,8 +139,8 @@ export default {
         AppLayout,
     },
     mounted() {
-        this.form.topLimit = this.topLimit;
-        this.form.bottomLimit = this.bottomLimit;
+        this.form.topLimit = this.settingsTopLimit;
+        this.form.bottomLimit = this.settingsBottomLimit;
     },
     created() {
         setInterval(() => this.refreshProps(), 10000);
@@ -143,7 +151,10 @@ export default {
                 only: [
                     'CurrentTemp',
                     'topLimit',
-                    'bottomLimit'
+                    'bottomLimit',
+                    'settingsTopLimit',
+                    'settingsBottomLimit',
+                    'lastEntries',
                 ],
                 preserveScroll: true,
             })
