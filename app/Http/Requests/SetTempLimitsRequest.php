@@ -26,7 +26,7 @@ class SetTempLimitsRequest extends FormRequest
     {
         return [
             'topLimit' => ['required', 'numeric', 'between:-40,105', 'gt:bottomLimit'],
-            'bottomLimit' => ['required', 'numeric', 'between:-5,60'],
+            'bottomLimit' => ['required', 'numeric', 'between:-40,105'],
         ];
     }
 
@@ -36,8 +36,8 @@ class SetTempLimitsRequest extends FormRequest
             'topLimit.required' => 'Oberes Limit muss ausgefüllt sein!',
             'topLimit.gt' => 'Oberes Limit muss höher sein als das Untere Limit',
             'bottomLimit.required' => 'Unteres Limit muss ausgefüllt sein!',
-            'topLimit.between' => 'Das Limit muss zwischen -5 und 50 sein!',
-            'bottomLimit.between' => 'Das Limit muss zwischen -5 und 50 sein!',
+            'topLimit.between' => 'Das Limit muss zwischen -40 und 105 sein!',
+            'bottomLimit.between' => 'Das Limit muss zwischen -40 und 105 sein!',
             'topLimit.numeric' => 'Oberes Limit muss ein numerischer Wert sein!',
             'bottomLimit.numeric' => 'Unteres Limit muss ein numerischer Wert sein!',
         ];
