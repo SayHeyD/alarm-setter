@@ -109,7 +109,6 @@ export default {
                     this.refreshProps();
                 }
             })
-
         }
     }
 }
