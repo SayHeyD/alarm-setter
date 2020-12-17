@@ -160,7 +160,7 @@ export default {
             })
         },
         submit() {
-            this.$inertia.post(route('api_set_limits'), this.form, {
+            this.$inertia.post(route('set_limits'), this.form, {
                 onFinish: () => {
                     this.formErrors = this.errors
                     this.showSuccessMessage = true
