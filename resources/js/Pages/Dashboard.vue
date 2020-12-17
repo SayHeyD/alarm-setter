@@ -13,11 +13,10 @@
             <div>
               <h3 class="text-2xl font-semibold">Aktuelle Temparatur</h3>
               <div class="text-xl">
-                <p v-if="CurrentTemp !== null" v-text="CurrentTemp"></p>
+                <p v-if="CurrentTemp !== null" :class="{'text-red-500' : CurrentTemp >= topLimit || CurrentTemp <= bottomLimit}" v-text="CurrentTemp"></p>
                 <p v-else class="text-red-500">Keine aktuellen Daten vorhanden!</p>
               </div>
             </div>
-
             <div>
               <h3 class="text-2xl font-semibold">Unteres Temparaturlimit</h3>
               <div class="text-xl">
