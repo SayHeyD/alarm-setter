@@ -15,10 +15,10 @@ class CreateTemperaturesTable extends Migration
     {
         Schema::create('temperatures', function (Blueprint $table) {
             $table->id();
-            $table->float('recorded');
+            $table->float('recorded', 8, 1);
             $table->timestamp('recorded_at');
-            $table->float('topLimit');
-            $table->float('bottomLimit');
+            $table->float('topLimit', 8, 1);
+            $table->float('bottomLimit', 8, 1);
             $table->timestamps();
         });
     }
