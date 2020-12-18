@@ -51,7 +51,8 @@ class TemperatureController extends Controller
         $temp = new Temperature();
 
         $temp->recorded = $request->recorded;
-        $temp->recorded_at = $request->recorded_at;
+        $temp->recorded_at = Carbon::createFromFormat('Y-m-d H:i:s', $request->recorded_at, 'UTC')
+            ->setTimezone('Europe/Zurich')->toDateTimeString();
         $temp->topLimit = $settings->topLimit;
         $temp->bottomLimit = $settings->bottomLimit;
         $temp->device_id = $device->id;
