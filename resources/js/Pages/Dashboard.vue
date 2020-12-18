@@ -143,7 +143,7 @@ export default {
         this.form.bottomLimit = this.settingsBottomLimit;
     },
     created() {
-        setInterval(() => this.refreshProps(), 10000);
+        setInterval(() => this.refreshProps(), 5000);
     },
     methods: {
         refreshProps() {
