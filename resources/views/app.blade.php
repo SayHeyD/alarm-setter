@@ -20,4 +20,7 @@
     <body class="font-sans antialiased">
         @inertia
     </body>
+    <footer>
+      {{ env('SERVER_NAME') }}
+    </footer>
 </html>
